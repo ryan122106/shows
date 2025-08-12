@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 
 const app = express();
 
+//setup a middleware to handle JSON request
+app.use(express.json());
+
 async function connectToMongoDB() {
     try{
         await mongoose.connect("mongodb://localhost:27017/netflix"); 
@@ -24,6 +27,7 @@ app.use("/movies", movieRouter);
 
 const showRouter = require("./routes/show");
 app.use("/shows", showRouter);
+
 
 
 
